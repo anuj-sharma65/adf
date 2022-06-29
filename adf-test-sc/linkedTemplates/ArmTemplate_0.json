@@ -43,7 +43,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"fileName": "customer.csv",
+						"fileName": "dataset_test_firnCustomer",
 						"folderPath": "bigquery",
 						"container": "blobtestsqlserver"
 					},
