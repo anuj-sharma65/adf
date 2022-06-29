@@ -5,8 +5,32 @@
 		"factoryName": {
 			"value": "adf-test-sc"
 		},
+		"linkedservicesqlservertest_connectionString": {
+			"value": ""
+		},
+		"azblobtestsqlserverlinkedservice_connectionString": {
+			"value": ""
+		},
+		"ls_source_container_connectionString": {
+			"value": ""
+		},
+		"ls_sinkContainer_connectionString": {
+			"value": ""
+		},
+		"ls_gzip_connectionString": {
+			"value": ""
+		},
+		"ls_GoogleBigQuery_clientSecret": {
+			"value": ""
+		},
+		"ls_GoogleBigQuery_refreshToken": {
+			"value": ""
+		},
 		"ls_blob_connectionString": {
 			"value": ""
+		},
+		"ls_GoogleBigQuery_properties_typeProperties_clientId": {
+			"value": "604316010665-knju02igfoa8ls4qch4vu4qb4maqllho.apps.googleusercontent.com"
 		}
 	}
 }

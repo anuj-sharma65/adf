@@ -7,9 +7,41 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "adf-test-sc"
 		},
+		"linkedservicesqlservertest_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'linkedservicesqlservertest'"
+		},
+		"azblobtestsqlserverlinkedservice_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'azblobtestsqlserverlinkedservice'"
+		},
+		"ls_source_container_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls_source_container'"
+		},
+		"ls_sinkContainer_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls_sinkContainer'"
+		},
+		"ls_gzip_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls_gzip'"
+		},
+		"ls_GoogleBigQuery_clientSecret": {
+			"type": "secureString",
+			"metadata": "Secure string for 'clientSecret' of 'ls_GoogleBigQuery'"
+		},
+		"ls_GoogleBigQuery_refreshToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'refreshToken' of 'ls_GoogleBigQuery'"
+		},
 		"ls_blob_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'ls_blob'"
+		},
+		"ls_GoogleBigQuery_properties_typeProperties_clientId": {
+			"type": "string",
+			"defaultValue": "604316010665-knju02igfoa8ls4qch4vu4qb4maqllho.apps.googleusercontent.com"
 		},
 		"containerUri": {
 			"type": "string",
@@ -38,12 +70,56 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
+					"azblobtestsqlserverlinkedservice_connectionString": {
+						"value": "[parameters('azblobtestsqlserverlinkedservice_connectionString')]"
+					},
+					"ls_source_container_connectionString": {
+						"value": "[parameters('ls_source_container_connectionString')]"
+					},
+					"ls_sinkContainer_connectionString": {
+						"value": "[parameters('ls_sinkContainer_connectionString')]"
+					},
+					"ls_gzip_connectionString": {
+						"value": "[parameters('ls_gzip_connectionString')]"
+					},
+					"ls_GoogleBigQuery_clientSecret": {
+						"value": "[parameters('ls_GoogleBigQuery_clientSecret')]"
+					},
+					"ls_GoogleBigQuery_refreshToken": {
+						"value": "[parameters('ls_GoogleBigQuery_refreshToken')]"
+					},
 					"ls_blob_connectionString": {
 						"value": "[parameters('ls_blob_connectionString')]"
+					},
+					"linkedservicesqlservertest_connectionString": {
+						"value": "[parameters('linkedservicesqlservertest_connectionString')]"
+					},
+					"ls_GoogleBigQuery_properties_typeProperties_clientId": {
+						"value": "[parameters('ls_GoogleBigQuery_properties_typeProperties_clientId')]"
 					}
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "adf-test-sc_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adf-test-sc_ArmTemplate_0')]"
+			]
 		}
 	]
 }
